@@ -1,23 +1,34 @@
 <template>
   <v-app style="background-color: #0088B7">
     <v-main class="d-flex align-center justify-center">
-      <div>
-        <questions
-            v-if="currentQuestion"
-            :image="currentQuestion.image"
-            :question="currentQuestion.question"
-            :options="currentQuestion.options"
-            :correct="currentQuestion.correct"
-            @answered="handleAnswered"
-        ></questions>
-        <div v-else class="text-h4" style="color: white">
-          Quiz Finalizado! Pontuação: {{ score }}/{{ questionList.length }}
+      <v-container>
+        <v-row justify="end">
+          <v-col cols="auto" style="color: white" v-if="currentQuestion">
+            {{ currentIndex + 1}}/{{ questionList.length }}
+          </v-col>
+        </v-row>
+        <v-row align="center" justify="center" no-gutters>
+          <v-col cols="auto">
+            <div>
+              <questions
+                  v-if="currentQuestion"
+                  :image="currentQuestion.image"
+                  :question="currentQuestion.question"
+                  :options="currentQuestion.options"
+                  :correct="currentQuestion.correct"
+                  @answered="handleAnswered"
+              ></questions>
+              <div v-else class="text-h4" style="color: white">
+                Quiz Finalizado! Pontuação: {{ score }}/{{ questionList.length }}
 
-          <v-btn text="Finalizar Aventura"
-                 @click="goToHome"
-          ></v-btn>
-        </div>
-      </div>
+                <v-btn text="Finalizar Aventura"
+                       @click="goToHome"
+                ></v-btn>
+              </div>
+            </div>
+          </v-col>
+        </v-row>
+      </v-container>
     </v-main>
   </v-app>
 </template>
