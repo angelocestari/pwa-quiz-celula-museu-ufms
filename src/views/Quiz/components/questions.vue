@@ -65,6 +65,7 @@ function selectOption(option) {
     }
     setTimeout(() => {
       emit("answered", isCorrect);
+      selectedOption.value = null
     }, 1000)
   }
 }
