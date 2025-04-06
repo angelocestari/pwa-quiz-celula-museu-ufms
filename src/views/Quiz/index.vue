@@ -2,11 +2,6 @@
   <v-app style="background-color: #0088B7">
     <v-main class="d-flex align-center justify-center">
       <v-container>
-        <v-row justify="end">
-          <v-col cols="auto" style="color: white" v-if="currentQuestion">
-            {{ currentIndex + 1}}/{{ questionList.length }}
-          </v-col>
-        </v-row>
         <v-row align="center" justify="center" no-gutters>
           <v-col cols="auto">
             <div>
@@ -18,8 +13,11 @@
                   :correct="currentQuestion.correct"
                   @answered="handleAnswered"
               ></questions>
-              <div v-else class="text-h4" style="color: white">
-                Quiz Finalizado! Pontuação: {{ score }}/{{ questionList.length }}
+              <div v-else-if="selectQuizStarted && !selectQuizFinished">
+                <SelectQuestions @finished="handleSelectQuizFinished"></SelectQuestions>
+              </div>
+              <div v-else-if="selectQuizFinished" class="text-h4" style="color: white">
+                Quiz Finalizado! Pontuação: {{ finalScore }}/{{ questionList.length + 4 }}
 
                 <v-btn text="Finalizar Aventura"
                        @click="goToHome"
@@ -37,6 +35,7 @@
 <script setup>
 import { ref, computed } from "vue";
 import Questions from "@/views/Quiz/components/questions.vue";
+import SelectQuestions from "@/views/Quiz/components/SelectQuestions.vue";
 import {useRouter} from "vue-router";
 
 const router = useRouter()
@@ -86,6 +85,10 @@ const questionList = [
 
 const currentIndex = ref(0)
 const score = ref(0)
+const selectQuizStarted = ref(false)
+const selectQuizFinished = ref(false)
+const finalScore = computed(() => score.value + extraScore.value)
+const extraScore = ref(0)
 
 const currentQuestion = computed(() => questionList[currentIndex.value] || null);
 
@@ -94,6 +97,15 @@ function handleAnswered(isCorrect) {
     score.value++
   }
   currentIndex.value++
+
+  if (currentIndex.value >= questionList.length) {
+    selectQuizStarted.value = true
+  }
+}
+
+function handleSelectQuizFinished(correctCount) {
+  extraScore.value = correctCount
+  selectQuizFinished.value = true
 }
 
 function goToHome() {
