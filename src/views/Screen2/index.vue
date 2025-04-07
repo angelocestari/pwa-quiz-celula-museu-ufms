@@ -9,9 +9,12 @@
               <v-card-title class="text-h4 font-weight-bold">Células Eucariontes</v-card-title>
               <v-card-subtitle class="text-h6 mt-3">O que você sabe sobre elas?</v-card-subtitle>
               <v-card-text class="text-body-1 mt-4">
-                textotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotexto
-                <br><br>
-                textotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotexto
+                Você sabia que dentro do seu corpo existem verdadeiras cidades microscópicas funcionando sem parar?
+                Agora chegou sua vez de explorar esse universo invisível, cheio de organelas incríveis e funções essenciais.
+                <br>
+                Prepare-se para descobrir os bastidores da vida! Vamos ver quem realmente manda na produção de energia, quem distribui proteínas e quem protege a célula como uma verdadeira muralha!
+                <br>
+                Partiu quiz das células?
               </v-card-text>
               <v-btn color="green"
                      variant="outlined"

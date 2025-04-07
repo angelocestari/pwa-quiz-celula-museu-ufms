@@ -2,7 +2,7 @@
   <v-container class="fill-height" fluid>
     <v-row align="center" justify="center">
       <v-col cols="12" md="8">
-        <v-img :src="image" height="300px"></v-img>
+        <v-img :src="image" height="200px"></v-img>
         <v-card-title class="text-h5 mb-2 text-justify"
                          style="word-wrap: break-word ; white-space: normal ; color: white">
 
@@ -17,8 +17,7 @@
             >
               <v-btn block :color="getButtonColor(option)"
                      @click="selectOption(option)"
-                     :class="{'animate-correct': selectedOption === option && option === correct}"
-              >
+                     :class="{'animate-correct': selectedOption === option && option === correct, 'btn-wrap': true}">
                 {{ option }}
               </v-btn>
             </v-col>
@@ -65,6 +64,7 @@ function selectOption(option) {
     }
     setTimeout(() => {
       emit("answered", isCorrect);
+      selectedOption.value = null
     }, 1000)
   }
 }
@@ -86,6 +86,12 @@ function getButtonColor(option) {
 
 .animate-correct {
   animation: pulse 1s ease-in-out;
+}
+
+.btn-wrap ::v-deep .v-btn__content {
+  white-space: normal !important;
+  word-wrap: break-word !important;
+  text-align: center;
 }
 
 @keyframes pulse {
