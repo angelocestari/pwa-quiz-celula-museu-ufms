@@ -52,28 +52,27 @@
 import {ref, defineEmits} from 'vue';
 
 const emit = defineEmits(['finished']);
-
 const selectQuestions = [
   {
-    image: 'src/assets/nucleo.jpg',
+    image: new URL('@/assets/nucleo.jpg', import.meta.url).href,
     question: 'Centro que comanda todo o funcionamento celular, pois abriga a molécula (DNA) responsável por ditar todas as regras dentro dela.',
     options: ['Núcleo', 'Réticulo endoplasmático', 'Membrana Plasmática', 'Ribossomo'],
     correct: 'Núcleo',
   },
   {
-    image: 'src/assets/ribossomo.jpg',
+    image: new URL('@/assets/ribossomo.jpg', import.meta.url).href,
     question: 'Pequenas estruturas responsáveis pela síntese de proteínas.',
     options: ['Núcleo', 'Réticulo endoplasmático', 'Membrana Plasmática', 'Ribossomo'],
     correct: 'Ribossomo',
   },
   {
-    image: 'src/assets/reticulo_endoplasmatico.jpg',
+    image: new URL('@/assets/reticulo_endoplasmatico.jpg', import.meta.url).href,
     question: 'Pode ser visto como uma rede de túneis interconectados responsável por formar proteínas e lipídios para compor partes da célula e permitir seu perfeito funcionamento.',
     options: ['Núcleo', 'Retículo endoplasmático', 'Membrana Plasmática', 'Ribossomo'],
     correct: 'Retículo endoplasmático'
   },
   {
-    image: 'src/assets/membrana_celular.jpg',
+    image: new URL('@/assets/membrana_celular.jpg', import.meta.url).href,
     question: 'A Membrana Plasmática controla o que entra e o que sai e ainda permite que a célula se comunique com o ambiente externo. Ela reveste a célula se comportando como uma verdadeira fronteira.',
     options: ['Núcleo', 'Réticulo endoplasmático', 'Membrana Plasmática', 'Ribossomo'],
     correct: 'Membrana Plasmática'
