@@ -7,7 +7,7 @@ import vueDevTools from 'vite-plugin-vue-devtools'
 export default defineConfig({
     base: '/quiz-celula-eucarionte/',
     server: {
-        https: false
+        https: true
     },
     plugins: [
         vue(),
@@ -15,7 +15,7 @@ export default defineConfig({
         VitePWA({
             registerType: 'autoUpdate',
             devOptions: {
-                enabled: true
+                enabled: false
             },
             manifest: {
                 name: 'Sala Imersiva - UFMS',

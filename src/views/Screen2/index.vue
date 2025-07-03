@@ -1,49 +1,59 @@
 <template>
   <v-app>
-    <top-bar></top-bar>
-    <v-main class="d-flex align-center justify-center">
-      <v-container class="mt-n4">
-        <v-row class="align-center">
-          <v-col cols="12" md="6">
-            <v-card class="pa-6 text-center elevation-3" max-width="500px">
-              <v-card-title class="text-h4 font-weight-bold">Células Eucariontes</v-card-title>
-              <v-card-subtitle class="text-h6 mt-3">O que você sabe sobre elas?</v-card-subtitle>
-              <v-card-text class="text-body-1 mt-4">
-                Você sabia que dentro do seu corpo existem verdadeiras cidades microscópicas funcionando sem parar?
-                Agora chegou sua vez de explorar esse universo invisível, cheio de organelas incríveis e funções essenciais.
-                <br>
-                Prepare-se para descobrir os bastidores da vida! Vamos ver quem realmente manda na produção de energia, quem distribui proteínas e quem protege a célula como uma verdadeira muralha!
-                <br>
-                Partiu quiz das células?
-              </v-card-text>
-              <v-btn color="green"
-                     variant="outlined"
-                     class="px-6 py-3 rounded-lg"
-                     @click="goToQuiz"
-                     text="Iniciar o Quiz"
-              ></v-btn>
-            </v-card>
-          </v-col>
-          <v-col cols="12"
-                 md="6"
-                 class="d-flex justify-center">
-            <v-img :src="urlCelula" max-width="700" contain></v-img>
+    <div class="top-bar">
+      <v-container>
+        <v-row>
+          <v-col cols="auto">
+            <v-btn text="Voltar"
+                   color="#0088B7"
+                   variant="elevated"
+                   class="px-6 py-3 text-white rounded-lg"
+                   @click="goToHomePage"
+            ></v-btn>
           </v-col>
         </v-row>
       </v-container>
+    </div>
+
+    <v-main>
+      <div class="card-lateral">
+        <v-card class="pa-6 elevation-4 text-white text-center"
+                color="transparent"
+                width="60%"
+        >
+          <v-card-title class="text-h5 font-weight-bold text-white text-wrap">
+            Você já parou pra pensar no que acontece dentro da sua célula?
+          </v-card-title>
+          <v-card-text class="text-h6">
+            <br>
+            O que será que ela carrega por aí? E por que será que ela é tão importante pra gente? <br>
+            Está na hora de colocar seu cérebro para trabalhar!<br>
+            Topa encarar um quiz cheio de curiosidades sobre esse universo microscópico? Vamos ver quantas você acerta!
+          </v-card-text>
+          <v-card-actions class="justify-center">
+            <v-btn color="#0088B7"
+                   variant="elevated"
+                   class="px-6 py-3 text-white rounded-lg mt-5"
+                   @click="goToQuiz"
+            >Iniciar</v-btn>
+          </v-card-actions>
+        </v-card>
+      </div>
     </v-main>
   </v-app>
 </template>
 
 <script setup>
-import TopBar from "@/views/components/topBar.vue";
 import {useRouter} from "vue-router";
 
 const router = useRouter();
-const urlCelula = new URL('@/assets/celula_eucarionte_atualizada.jpg', import.meta.url).href
 
 function goToQuiz() {
   router.push("/quiz");
+}
+
+function goToHomePage() {
+  router.push("/");
 }
 
 </script>
@@ -52,10 +62,32 @@ function goToQuiz() {
 
 .v-main {
   min-height: 100vh;
+  padding-top: 80px;
+  position: relative;
 }
 
-v-card {
-  border-radius: 12px;
+.v-application {
+  background-image: url("@/assets/imagem_fundo_quiz.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  min-height: 100vh;
 }
+
+.top-bar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 10;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.card-lateral {
+  position: absolute;
+  left: 30%;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
 
 </style>
